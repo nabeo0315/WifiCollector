@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">WifiCollector</string>
+    <string name="place">Place</string>
+    <string name="start">Start</string>
+    <string name="addplace">add place</string>
+    <string name="id">ID</string>
+    <string name="database">database</string>
+    <string name="search">search</string>
+</resources>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="74dp"
+        android:layout_marginRight="74dp"
+        android:layout_marginTop="107dp"
+        android:layout_toLeftOf="@+id/locationId"
+        android:layout_toStartOf="@+id/locationId"
+        android:text="@string/id"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/locationId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/placeName"
+        android:layout_alignLeft="@+id/registerButton"
+        android:layout_alignStart="@+id/registerButton"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/placeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/locationId"
+        android:layout_alignLeft="@+id/locationId"
+        android:layout_alignRight="@+id/locationId"
+        android:layout_alignStart="@+id/locationId"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="93dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_alignTop="@+id/placeName"
+        android:layout_marginTop="11dp"
+        android:text="@string/place"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/placeName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="91dp"
+        android:text="@android:string/VideoView_error_button" />
+
+</RelativeLayout>
