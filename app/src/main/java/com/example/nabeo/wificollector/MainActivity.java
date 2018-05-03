@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
             //editText.setText("");
         }
     }
-    .
+
     public void scanTrainData(String room_name){
         new Handler().post(new DisplayToast(this, "スキャン回数：" + String.valueOf(count)));
         for(ScanResult result: ((WifiManager)this.getApplicationContext().getSystemService(Context.WIFI_SERVICE)).getScanResults()) {
