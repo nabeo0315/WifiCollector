@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 998);
         }
 
-        new DBToText(context).writeDBToTextFile();
+        //new DBToText(context).writeDBToTextFile();
     }
 
     @Override

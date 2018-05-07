@@ -5,8 +5,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -17,6 +19,7 @@ import java.io.IOException;
 public class DBToText {
     private static SQLiteDatabase db;
     private static Context context;
+    private static String rootdir = Environment.getExternalStorageDirectory().toString() + "/WifiCollector/";
 
     DBToText(Context context){
         this.context = context;
@@ -48,13 +51,38 @@ public class DBToText {
     }
 
     private static void writeFile(String str, String filePath){
-        String rootdir = Environment.getExternalStorageDirectory().toString() + "/WifiCollector/";
         try{
             File file = new  File(rootdir + filePath);
             if(file.exists()) file.delete();
             FileWriter fileWriter = new FileWriter(file, true);
             fileWriter.write(str);
             fileWriter.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void writeTextToDB(){
+        try {
+            BufferedReader br_room = new BufferedReader(new FileReader(rootdir + "room_db.txt"));
+            BufferedReader br_bssid = new BufferedReader(new FileReader(rootdir + "bssid_db.txt"));
+            BufferedReader br_wifi = new BufferedReader(new FileReader(rootdir + "wifi_db.txt"));
+            String line;
+            String[] str;
+
+            while((line = br_room.readLine()) != null){
+                str  = line.split(",");
+                db.execSQL("insert into room(id, name) values(" + str[0] + ", " + str[1] + ")");
+            }
+            while((line = br_bssid.readLine()) != null){
+                str = line.split(",");
+                db.execSQL("insert into bssid(id, mac) values(" + str[0] + ", " + str[1] + ")");
+            }
+            while((line = br_wifi.readLine()) != null){
+                str = line.split(",");
+                db.execSQL("insert into wifi(id, timestamp, room_id, bssid_id, count, ssid, rssi) values("
+                        + str[0] + ", " + str[1] + ", " + str[2] + ", " + str[3] + ", " + str[4] + ", " + str[5] + ", " + str[6] + ")");
+            }
         }catch (IOException e){
             e.printStackTrace();
         }
